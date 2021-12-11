@@ -1,0 +1,29 @@
+
+module parallel_in_serial_out ( din ,clk ,reset ,load ,dout );
+
+output dout ;
+reg dout ;
+
+input [3:0] din ;
+wire [3:0] din ;
+input clk ;
+wire clk ;
+input reset ;
+wire reset ;
+input load ;
+wire load ;
+
+reg [3:0]temp;
+
+always @ (posedge (clk)) begin
+ if (reset)
+  temp <= 1;
+ else if (load)
+  temp <= din;
+ else begin
+  dout <= temp[3];
+  temp <= {temp[2:0],1'b0};
+ end
+end
+
+endmodule

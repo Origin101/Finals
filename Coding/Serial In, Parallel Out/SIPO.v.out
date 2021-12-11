@@ -1,0 +1,66 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002282f866bf0 .scope module, "SIPO" "SIPO" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "din";
+    .port_info 1 /INPUT 1 "clk";
+    .port_info 2 /INPUT 1 "reset";
+    .port_info 3 /OUTPUT 4 "dout";
+L_000002282f867610 .functor BUFZ 4, v000002282f867000_0, C4<0000>, C4<0000>, C4<0000>;
+o000002282f8b6fa8 .functor BUFZ 1, C4<z>; HiZ drive
+v000002282f866d80_0 .net "clk", 0 0, o000002282f8b6fa8;  0 drivers
+o000002282f8b6fd8 .functor BUFZ 1, C4<z>; HiZ drive
+v000002282f866e20_0 .net "din", 0 0, o000002282f8b6fd8;  0 drivers
+v000002282f866ec0_0 .net "dout", 3 0, L_000002282f867610;  1 drivers
+o000002282f8b7038 .functor BUFZ 1, C4<z>; HiZ drive
+v000002282f866f60_0 .net "reset", 0 0, o000002282f8b7038;  0 drivers
+v000002282f867000_0 .var "s", 3 0;
+E_000002282f8b6be0 .event posedge, v000002282f866d80_0;
+    .scope S_000002282f866bf0;
+T_0 ;
+    %wait E_000002282f8b6be0;
+    %load/vec4 v000002282f866f60_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v000002282f867000_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000002282f866e20_0;
+    %ix/load 4, 3, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v000002282f867000_0, 4, 5;
+    %load/vec4 v000002282f867000_0;
+    %parti/s 1, 3, 3;
+    %ix/load 4, 2, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v000002282f867000_0, 4, 5;
+    %load/vec4 v000002282f867000_0;
+    %parti/s 1, 2, 3;
+    %ix/load 4, 1, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v000002282f867000_0, 4, 5;
+    %load/vec4 v000002282f867000_0;
+    %parti/s 1, 1, 2;
+    %ix/load 4, 0, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v000002282f867000_0, 4, 5;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "SIPO.v";
